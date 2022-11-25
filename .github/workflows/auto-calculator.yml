@@ -10,23 +10,23 @@ jobs:
       matrix:
         python-version: [3.8, 3.9]
 
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check-out Repository
+        uses: actions/checkout@v2
       
-      steps:
-        - name: Check-out Repository
-          uses: actions/checkout@v2
-        
-        - name: Install python ${{ matrix.python-version }}
-          uses: actions/setup-python@v2
-          with:
-            python-version: ${{ matrix.python-version }}
-            architecture: 'x64'
-            cache: 'pip'
+      - name: Install python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: 'x64'
+          cache: 'pip'
 
-        - name: InstallDeps
-          run: |
-            python -m pip install --upgrade pip
-            pip install -r requirements.txt
+      - name: InstallDeps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
     my_testing:    
       - name: Start Tests
