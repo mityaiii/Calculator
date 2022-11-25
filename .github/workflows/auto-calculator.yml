@@ -45,11 +45,12 @@ jobs:
     steps:
       - name: Convert to exe
       - uses: jimkring/python-script-to-exe@v0.2.0
-    with:
-      script-name: main.py
-  
-  - name: Upload Artifact
-    uses: actions/upload-artifact@v3
-    with:
-      name: exe
-      path: build/main.exe
+
+      with:
+        script-name: main.py
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: exe
+          path: convert_to_exe/main.exe
