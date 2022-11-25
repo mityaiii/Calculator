@@ -10,39 +10,38 @@ jobs:
       matrix:
         python-version: [3.8, 3.9]
 
-    runs-on: ubuntu-latest
+    my_testing:    
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check-out Repository
+          uses: actions/checkout@v2
+        
+        - name: Install python ${{ matrix.python-version }}
+          uses: actions/setup-python@v2
+          with:
+            python-version: ${{ matrix.python-version }}
+            architecture: 'x64'
+            cache: 'pip'
 
-    steps:
-      - name: Check-out Repository
-        uses: actions/checkout@v2
-      
-      - name: Install python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: 'x64'
-          cache: 'pip'
+        - name: InstallDeps
+          run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
 
-      - name: InstallDeps
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      my_testing:    
         - name: Start Tests
           run: python -m unittest
 
-      convert_to_exe:
-        needs: [ my_testing ]
-        steps:
-          - name: Convert to exe
-          - uses: jimkring/python-script-to-exe@v0.2.0
-        with:
-          script-name: main.py
+
+      # convert_to_exe:
+      #   needs: [ my_testing ]
+      #   steps:
+      #     - name: Convert to exe
+      #     - uses: jimkring/python-script-to-exe@v0.2.0
+      #   with:
+      #     script-name: main.py
       
-      # Uploads artifact
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: exe
-          path: build/main.exe
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: exe
+      #     path: build/main.exe
