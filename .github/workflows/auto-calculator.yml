@@ -1,7 +1,7 @@
 name: CalculatorChecks
 
 on:
-  commit:
+  push:
     branches: [ main ]
 
 jobs:
