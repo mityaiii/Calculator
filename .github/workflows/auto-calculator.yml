@@ -30,8 +30,8 @@ jobs:
 
   my_testing:    
     strategy:
-    matrix:
-      python-version: [3.8, 3.9]
+      matrix:
+        python-version: [3.8, 3.9]
 
     runs-on: ubuntu-latest
     steps:
