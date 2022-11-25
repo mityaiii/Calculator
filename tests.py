@@ -32,3 +32,4 @@ class TestCalculatr(unittest.TestCase):
         self.assertRaises(TypeError, subtraction, '2', '3')
         self.assertRaises(TypeError, multiplication, '2', '3')
         self.assertRaises(TypeError, division, '2', '3')
+        
