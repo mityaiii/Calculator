@@ -28,29 +28,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-  my_testing:  
-    needs: [ build ]  
-    strategy:
-      matrix:
-        python-version: [3.8, 3.9]
-
-    runs-on: ubuntu-latest
-    steps:
       - name: Start Tests
         run: python -m unittest
 
-
-  convert_to_exe:
-    needs: [ my_testing ]
-    steps:
       - name: Convert to exe
-      - uses: jimkring/python-script-to-exe@v0.2.0
+        uses: jimkring/python-script-to-exe@v0.2.0
 
-      with:
-        script-name: main.py
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
         with:
-          name: exe
-          path: convert_to_exe/main.exe
+          script-name: main.py
+
+        - name: Upload Artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: exe
+            path: convert_to_exe/main.exe
