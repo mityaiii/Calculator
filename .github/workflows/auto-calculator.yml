@@ -31,14 +31,14 @@ jobs:
       - name: Start Tests
         run: python -m unittest
 
-      - name: Convert to exe
-        uses: jimkring/python-script-to-exe@v0.2.0
+      # - name: Convert to exe
+      #   uses: jimkring/python-script-to-exe@v0.2.0
 
-        with:
-          script-name: main.py
+      #   with:
+      #     script-name: main.py
 
-        - name: Upload Artifact
-          uses: actions/upload-artifact@v3
-          with:
-            name: exe
-            path: convert_to_exe/main.exe
+      #   - name: Upload Artifact
+      #     uses: actions/upload-artifact@v3
+      #     with:
+      #       name: exe
+      #       path: convert_to_exe/main.exe
