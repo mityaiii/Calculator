@@ -27,7 +27,22 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
-      - name: Start Tests
-        run: python -m unittest
-          # run: python -m unittest Calculator/tests.py
+
+      my_testing:    
+        - name: Start Tests
+          run: python -m unittest
+
+      convert_to_exe:
+        needs: [ my_testing ]
+        steps:
+          - name: Convert to exe
+          - uses: jimkring/python-script-to-exe@v0.2.0
+        with:
+          script-name: main.py
+      
+      # Uploads artifact
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: exe
+          path: build/main.exe
