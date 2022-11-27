@@ -1,8 +1,8 @@
 name: CalculatorChecks
 
 on:
-  push:
-    branches: [ main ]
+  commit: 
+    branches: [ main ] 
 
 jobs:
   build:
@@ -14,10 +14,10 @@ jobs:
     
     steps:
       - name: Check-out Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       
       - name: Install python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           architecture: 'x64'
@@ -32,7 +32,7 @@ jobs:
         run: python -m unittest
 
       - name: Convert to exe
-        uses: jimkring/python-script-to-exe@v0.2.0
+        uses: Nuitka/Nuitka-Action@v0.4
         with:
           script-name: main.py
 
@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: exe
-          path: convert_to_exe/main.exe
+          path: build/main.exe
