@@ -38,9 +38,9 @@ jobs:
 
       - name: Check Directory
         run: | 
-        ls -al
-        cd build
-        ls -al
+          ls -al
+          cd build
+          ls -al
 
       # - name: Upload Artifact
       #   uses: actions/upload-artifact@v3
