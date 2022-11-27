@@ -40,9 +40,11 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: dist/main.exe
+          path: dist/main
           retention-days: 1
 
       - name: Check Directory
         run: | 
+          ls -al
+          cd dist
           ls -al
