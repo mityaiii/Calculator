@@ -40,7 +40,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: dist/main
+          path: |
+            build
+            dist
+            main.spec
           retention-days: 1
 
       - name: Check Directory
