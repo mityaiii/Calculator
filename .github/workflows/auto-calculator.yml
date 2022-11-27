@@ -31,13 +31,13 @@ jobs:
       - name: Start Tests
         run: python -m unittest
 
+      - name: Convert to exe
+        uses: Nuitka/Nuitka-Action@v0.4
+        with:
+          script-name: main.py
+
       - name: Check Directory
         run: ls -al
-
-      # - name: Convert to exe
-      #   uses: Nuitka/Nuitka-Action@v0.4
-      #   with:
-      #     script-name: main.py
 
       # - name: Upload Artifact
       #   uses: actions/upload-artifact@v3
