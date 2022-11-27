@@ -28,8 +28,8 @@ class TestCalculatr(unittest.TestCase):
         self.assertRaises(ValueError, division, 2, 0)
     
     def test_types(self):
-        self.assertRaises(TypeError, addition, '2', '3')
-        self.assertRaises(TypeError, subtraction, '2', '3')
-        self.assertRaises(TypeError, multiplication, '2', '3')
-        self.assertRaises(TypeError, division, '2', '3')
+        self.assertRaises(TypeError, addition, '2 + i', '3')
+        self.assertRaises(TypeError, subtraction, '2 + i', '3')
+        self.assertRaises(TypeError, multiplication, '2 + i', '3')
+        self.assertRaises(TypeError, division, '2 + i', '3')
         

@@ -31,19 +31,11 @@ jobs:
       - name: Start Tests
         run: python -m unittest
 
-      - name: Convert to exe
-        uses: Nuitka/Nuitka-Action@v0.4
-        with:
-          script-name: main.py
+      - name: Convert to Exe
+        run: |
+          pip install pyinstaller
+          pyinstaller --onefile main.py
 
       - name: Check Directory
         run: | 
           ls -al
-          cd build
-          ls -al
-
-      # - name: Upload Artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: exe
-      #     path: build/main.exe
