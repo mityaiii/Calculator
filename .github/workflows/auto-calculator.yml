@@ -37,7 +37,10 @@ jobs:
           script-name: main.py
 
       - name: Check Directory
-        run: ls -al
+        run: | 
+        ls -al
+        cd build
+        ls -al
 
       # - name: Upload Artifact
       #   uses: actions/upload-artifact@v3
